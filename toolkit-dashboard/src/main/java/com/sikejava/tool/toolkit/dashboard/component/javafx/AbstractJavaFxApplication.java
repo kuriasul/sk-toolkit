@@ -1,19 +1,23 @@
 package com.sikejava.tool.toolkit.dashboard.component.javafx;
 
-import com.sikejava.tool.toolkit.dashboard.component.javafx.boot.DefaultBootView;
+import com.sikejava.tool.toolkit.dashboard.component.javafx.view.DefaultBootView;
 import com.sikejava.tool.toolkit.dashboard.component.javafx.view.AbstractFxmlView;
 import com.sikejava.tool.toolkit.dashboard.component.javafx.view.SimpleView;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.util.StopWatch;
 
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -42,11 +46,25 @@ public abstract class AbstractJavaFxApplication extends Application {
 
     @Override
     public void init() throws Exception {
-        CompletableFuture.supplyAsync(() ->
-            SpringApplication.run(JavaFxContext.getAppClass(), JavaFxContext.getAppArgs())
-        ).whenComplete((applicationContext, throwable) -> {
+        CompletableFuture.supplyAsync(() -> {
+            long startTime = System.currentTimeMillis();
+            ConfigurableApplicationContext applicationContext = SpringApplication.run(JavaFxContext.getAppClass(), JavaFxContext.getAppArgs());
+            long sleepTime = 3000 - (System.currentTimeMillis() - startTime);
+            if (sleepTime > 0) {
+                try {
+                    Thread.sleep(sleepTime);
+                } catch (InterruptedException e) {
+                    log.error("系统异常. 异常详情: ", e);
+                    Platform.runLater(() -> {
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "系统异常");
+                        alert.showAndWait().ifPresent(response -> Platform.exit());
+                    });
+                }
+            }
+            return applicationContext;
+        }).whenComplete((applicationContext, throwable) -> {
             if (Objects.nonNull(throwable)) {
-                log.error("加载springboot失败. 失败详情: ", throwable);
+                log.error("加载springboot异常. 异常详情: ", throwable);
                 Platform.runLater(() -> {
                     Alert alert = new Alert(Alert.AlertType.ERROR, "加载springboot失败");
                     alert.showAndWait().ifPresent(response -> Platform.exit());
@@ -63,6 +81,7 @@ public abstract class AbstractJavaFxApplication extends Application {
     public void start(Stage stage) throws Exception {
         Stage splashStage = new Stage();
         splashStage.setScene(new Scene(JavaFxContext.getBootView().getView()));
+        splashStage.initStyle(StageStyle.UNDECORATED);
         splashStage.show();
 
         splashScreenShow.complete(() -> {

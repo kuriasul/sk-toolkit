@@ -1,7 +1,5 @@
 package com.sikejava.tool.toolkit.dashboard.component.javafx.view;
 
-import com.sikejava.tool.toolkit.dashboard.component.javafx.view.SimpleView;
-
 /**
  * fxml视图
  *

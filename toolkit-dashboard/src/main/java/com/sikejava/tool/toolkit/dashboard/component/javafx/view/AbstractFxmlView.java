@@ -53,15 +53,15 @@ public abstract class AbstractFxmlView implements FxmlView, ApplicationContextAw
         return currentView;
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
-
     /**
      * 获取fxml资源
      */
     private URL getFxmlResource() {
         return getClass().getResource("/template/" + getFxml() + ".fxml");
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
     }
 }
