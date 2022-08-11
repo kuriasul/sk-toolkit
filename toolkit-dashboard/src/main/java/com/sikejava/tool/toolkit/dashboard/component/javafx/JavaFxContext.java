@@ -1,6 +1,7 @@
 package com.sikejava.tool.toolkit.dashboard.component.javafx;
 
-import com.sikejava.tool.toolkit.dashboard.component.javafx.splash.SplashScreen;
+import com.sikejava.tool.toolkit.dashboard.component.javafx.view.AbstractFxmlView;
+import com.sikejava.tool.toolkit.dashboard.component.javafx.view.SimpleView;
 
 import org.springframework.context.ApplicationContext;
 
@@ -27,11 +28,11 @@ public enum JavaFxContext {
     /**
      * 启动画面
      */
-    private static SplashScreen splashScreen;
+    private static SimpleView bootView;
     /**
      * 首页视图
      */
-    private static Class<? extends AbstractJavaFxView> indexView;
+    private static Class<? extends AbstractFxmlView> indexView;
     /**
      * spring上下文
      */
@@ -53,19 +54,19 @@ public enum JavaFxContext {
         JavaFxContext.appArgs = appArgs;
     }
 
-    public static SplashScreen getSplashScreen() {
-        return splashScreen;
+    public static SimpleView getBootView() {
+        return bootView;
     }
 
-    public static void setSplashScreen(SplashScreen splashScreen) {
-        JavaFxContext.splashScreen = splashScreen;
+    public static void setBootView(SimpleView bootView) {
+        JavaFxContext.bootView = bootView;
     }
 
-    public static Class<? extends AbstractJavaFxView> getIndexView() {
+    public static Class<? extends AbstractFxmlView> getIndexView() {
         return indexView;
     }
 
-    public static void setIndexView(Class<? extends AbstractJavaFxView> indexView) {
+    public static void setIndexView(Class<? extends AbstractFxmlView> indexView) {
         JavaFxContext.indexView = indexView;
     }
 

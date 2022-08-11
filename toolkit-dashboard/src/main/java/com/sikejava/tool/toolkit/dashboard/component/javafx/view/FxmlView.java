@@ -1,14 +1,14 @@
-package com.sikejava.tool.toolkit.dashboard.component.javafx;
+package com.sikejava.tool.toolkit.dashboard.component.javafx.view;
 
-import javafx.scene.Parent;
+import com.sikejava.tool.toolkit.dashboard.component.javafx.view.SimpleView;
 
 /**
- * javafx视图
+ * fxml视图
  *
  * @author skjv2014@163.com
- * @since 2022-08-10 22:37:40
+ * @since 2022-08-11 07:57:50
  */
-public interface JavaFxView {
+public interface FxmlView extends SimpleView {
 
     /**
      * 获取fxml
@@ -27,13 +27,4 @@ public interface JavaFxView {
      * @since 2022-08-10 22:40:37
      */
     String getCss();
-
-    /**
-     * 获取view
-     *
-     * @return Parent view
-     * @author skjv2014@163.com
-     * @since 2022-08-10 22:40:56
-     */
-    Parent getView();
 }

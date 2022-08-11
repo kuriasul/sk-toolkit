@@ -1,7 +1,8 @@
 package com.sikejava.tool.toolkit.dashboard.component.javafx;
 
-import com.sikejava.tool.toolkit.dashboard.component.javafx.splash.DefaultSplashScreen;
-import com.sikejava.tool.toolkit.dashboard.component.javafx.splash.SplashScreen;
+import com.sikejava.tool.toolkit.dashboard.component.javafx.boot.DefaultBootView;
+import com.sikejava.tool.toolkit.dashboard.component.javafx.view.AbstractFxmlView;
+import com.sikejava.tool.toolkit.dashboard.component.javafx.view.SimpleView;
 
 import org.springframework.boot.SpringApplication;
 
@@ -26,14 +27,14 @@ public abstract class AbstractJavaFxApplication extends Application {
 
     private final CompletableFuture<Runnable> splashScreenShow = new CompletableFuture<>();
 
-    public static void launch(Class<? extends Application> appClass, String[] args, Class<? extends AbstractJavaFxView> indexView) {
-        launch(appClass, args, new DefaultSplashScreen(), indexView);
+    public static void launch(Class<? extends Application> appClass, String[] args, Class<? extends AbstractFxmlView> indexView) {
+        launch(appClass, args, new DefaultBootView(), indexView);
     }
 
-    public static void launch(Class<? extends Application> appClass, String[] args, SplashScreen splashScreen, Class<? extends AbstractJavaFxView> indexView) {
+    public static void launch(Class<? extends Application> appClass, String[] args, SimpleView bootView, Class<? extends AbstractFxmlView> indexView) {
         JavaFxContext.setAppClass(appClass);
         JavaFxContext.setAppArgs(args);
-        JavaFxContext.setSplashScreen(splashScreen);
+        JavaFxContext.setBootView(bootView);
         JavaFxContext.setIndexView(indexView);
 
         Application.launch(appClass, args);
@@ -61,13 +62,13 @@ public abstract class AbstractJavaFxApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Stage splashStage = new Stage();
-        splashStage.setScene(new Scene(JavaFxContext.getSplashScreen().getView()));
+        splashStage.setScene(new Scene(JavaFxContext.getBootView().getView()));
         splashStage.show();
 
         splashScreenShow.complete(() -> {
             splashStage.close();
 
-            AbstractJavaFxView indexView = JavaFxContext.getApplicationContext().getBean(JavaFxContext.getIndexView());
+            AbstractFxmlView indexView = JavaFxContext.getApplicationContext().getBean(JavaFxContext.getIndexView());
             Scene indexScene = new Scene(indexView.getView());
             stage.setScene(indexScene);
             stage.show();

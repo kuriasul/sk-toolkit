@@ -1,6 +1,6 @@
-package com.sikejava.tool.toolkit.dashboard.component.javafx;
+package com.sikejava.tool.toolkit.dashboard.component.javafx.view;
 
-import com.sikejava.tool.toolkit.dashboard.component.javafx.JavaFxView;
+import com.sikejava.tool.toolkit.dashboard.component.javafx.view.FxmlView;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -14,12 +14,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 /**
- * 抽象的javafx视图
+ * 抽象的fxml视图
  *
  * @author skjv2014@163.com
  * @since 2022-08-10 22:28:53
  */
-public abstract class AbstractJavaFxView implements JavaFxView, ApplicationContextAware {
+public abstract class AbstractFxmlView implements FxmlView, ApplicationContextAware {
 
     /**
      * spring上下文
