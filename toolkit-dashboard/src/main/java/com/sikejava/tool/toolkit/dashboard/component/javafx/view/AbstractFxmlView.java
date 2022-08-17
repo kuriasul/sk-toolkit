@@ -1,7 +1,5 @@
 package com.sikejava.tool.toolkit.dashboard.component.javafx.view;
 
-import com.sikejava.tool.toolkit.dashboard.component.javafx.view.FxmlView;
-
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -9,6 +7,7 @@ import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,7 +18,8 @@ import javafx.scene.Parent;
  * @author skjv2014@163.com
  * @since 2022-08-10 22:28:53
  */
-public abstract class AbstractFxmlView implements FxmlView, ApplicationContextAware {
+public abstract class AbstractFxmlView extends AbstractPlainView implements FxmlView, ApplicationContextAware {
+    private Parent root;
 
     /**
      * spring上下文
@@ -32,25 +32,26 @@ public abstract class AbstractFxmlView implements FxmlView, ApplicationContextAw
     }
 
     @Override
-    public Parent getView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getFxmlResource());
-        fxmlLoader.setControllerFactory(this.applicationContext::getBean);
+    public Parent getRoot() {
+        if (Objects.isNull(root)) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getFxmlResource());
+            fxmlLoader.setControllerFactory(this.applicationContext::getBean);
 
-        Parent currentView;
-        try {
-            currentView = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            try {
+                root = fxmlLoader.load();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            String css = getCss();
+            if (StringUtils.hasText(css)) {
+                URL cssResource = getClass().getResource(css);
+
+                root.getStylesheets().add(cssResource.toExternalForm());
+            }
         }
 
-        String css = getCss();
-        if (StringUtils.hasText(css)) {
-            URL cssResource = getClass().getResource(css);
-
-            currentView.getStylesheets().add(cssResource.toExternalForm());
-        }
-
-        return currentView;
+        return root;
     }
 
     /**

@@ -1,23 +1,19 @@
 package com.sikejava.tool.toolkit.dashboard.component.javafx;
 
-import com.sikejava.tool.toolkit.dashboard.component.javafx.view.DefaultBootView;
 import com.sikejava.tool.toolkit.dashboard.component.javafx.view.AbstractFxmlView;
-import com.sikejava.tool.toolkit.dashboard.component.javafx.view.SimpleView;
+import com.sikejava.tool.toolkit.dashboard.component.javafx.view.AbstractPlainView;
+import com.sikejava.tool.toolkit.dashboard.component.javafx.view.DefaultBootView;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.util.StopWatch;
 
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -35,7 +31,7 @@ public abstract class AbstractJavaFxApplication extends Application {
         launch(appClass, args, new DefaultBootView(), indexView);
     }
 
-    public static void launch(Class<? extends Application> appClass, String[] args, SimpleView bootView, Class<? extends AbstractFxmlView> indexView) {
+    public static void launch(Class<? extends Application> appClass, String[] args, AbstractPlainView bootView, Class<? extends AbstractFxmlView> indexView) {
         JavaFxContext.setAppClass(appClass);
         JavaFxContext.setAppArgs(args);
         JavaFxContext.setBootView(bootView);
@@ -49,7 +45,7 @@ public abstract class AbstractJavaFxApplication extends Application {
         CompletableFuture.supplyAsync(() -> {
             long startTime = System.currentTimeMillis();
             ConfigurableApplicationContext applicationContext = SpringApplication.run(JavaFxContext.getAppClass(), JavaFxContext.getAppArgs());
-            long sleepTime = 3000 - (System.currentTimeMillis() - startTime);
+            long sleepTime = 2000 - (System.currentTimeMillis() - startTime);
             if (sleepTime > 0) {
                 try {
                     Thread.sleep(sleepTime);
@@ -79,18 +75,11 @@ public abstract class AbstractJavaFxApplication extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Stage splashStage = new Stage();
-        splashStage.setScene(new Scene(JavaFxContext.getBootView().getView()));
-        splashStage.initStyle(StageStyle.UNDECORATED);
-        splashStage.show();
+        JavaFxContext.showView(JavaFxContext.getBootView());
 
         splashScreenShow.complete(() -> {
-            splashStage.close();
-
-            AbstractFxmlView indexView = JavaFxContext.getApplicationContext().getBean(JavaFxContext.getIndexView());
-            Scene indexScene = new Scene(indexView.getView());
-            stage.setScene(indexScene);
-            stage.show();
+            JavaFxContext.closeView(JavaFxContext.getBootView());
+            JavaFxContext.showView(JavaFxContext.getIndexView());
         });
     }
 }

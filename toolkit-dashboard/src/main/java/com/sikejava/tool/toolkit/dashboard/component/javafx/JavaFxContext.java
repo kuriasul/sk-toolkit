@@ -1,7 +1,7 @@
 package com.sikejava.tool.toolkit.dashboard.component.javafx;
 
 import com.sikejava.tool.toolkit.dashboard.component.javafx.view.AbstractFxmlView;
-import com.sikejava.tool.toolkit.dashboard.component.javafx.view.SimpleView;
+import com.sikejava.tool.toolkit.dashboard.component.javafx.view.AbstractPlainView;
 
 import org.springframework.context.ApplicationContext;
 
@@ -28,7 +28,7 @@ public enum JavaFxContext {
     /**
      * 启动画面
      */
-    private static SimpleView bootView;
+    private static AbstractPlainView bootView;
     /**
      * 首页视图
      */
@@ -54,11 +54,11 @@ public enum JavaFxContext {
         JavaFxContext.appArgs = appArgs;
     }
 
-    public static SimpleView getBootView() {
+    public static AbstractPlainView getBootView() {
         return bootView;
     }
 
-    public static void setBootView(SimpleView bootView) {
+    public static void setBootView(AbstractPlainView bootView) {
         JavaFxContext.bootView = bootView;
     }
 
@@ -76,5 +76,23 @@ public enum JavaFxContext {
 
     public static void setApplicationContext(ApplicationContext applicationContext) {
         JavaFxContext.applicationContext = applicationContext;
+    }
+
+    public static void showView(AbstractPlainView plainView) {
+        plainView.show();
+    }
+
+    public static void closeView(AbstractPlainView plainView) {
+        plainView.close();
+    }
+
+    public static void showView(Class<? extends AbstractFxmlView> viewClass) {
+        AbstractFxmlView fxmlView = getApplicationContext().getBean(viewClass);
+        fxmlView.show();
+    }
+
+    public static void closeView(Class<? extends AbstractFxmlView> viewClass) {
+        AbstractFxmlView fxmlView = getApplicationContext().getBean(viewClass);
+        fxmlView.close();
     }
 }

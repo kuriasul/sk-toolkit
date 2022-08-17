@@ -4,21 +4,16 @@ import com.sikejava.tool.toolkit.dashboard.component.javafx.annotation.JavaFxVie
 import com.sikejava.tool.toolkit.dashboard.component.javafx.view.AbstractFxmlView;
 
 /**
- * 首页视图
+ * 卡片视图
  *
  * @author skjv2014@163.com
  * @since 2022-08-10 23:05:12
  */
 @JavaFxView
-public class IndexView extends AbstractFxmlView {
-
-    @Override
-    public String getTitle() {
-        return "工具集";
-    }
+public class CardView extends AbstractFxmlView {
 
     @Override
     public String getFxml() {
-        return "index/index";
+        return "index/card";
     }
 }

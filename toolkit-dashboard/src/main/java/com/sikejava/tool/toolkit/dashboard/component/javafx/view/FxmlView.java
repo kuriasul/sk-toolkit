@@ -6,7 +6,7 @@ package com.sikejava.tool.toolkit.dashboard.component.javafx.view;
  * @author skjv2014@163.com
  * @since 2022-08-11 07:57:50
  */
-public interface FxmlView extends SimpleView {
+public interface FxmlView extends PlainView {
 
     /**
      * 获取fxml

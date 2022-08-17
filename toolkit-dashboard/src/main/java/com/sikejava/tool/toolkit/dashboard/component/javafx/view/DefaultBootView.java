@@ -10,10 +10,10 @@ import javafx.scene.layout.HBox;
  * @author skjv2014@163.com
  * @since 2022-08-11 00:14:23
  */
-public class DefaultBootView implements SimpleView {
+public class DefaultBootView extends AbstractPlainView {
 
     @Override
-    public Parent getView() {
+    public Parent getRoot() {
         ImageView imageView = new ImageView(getClass().getResource("/image/splashScreen.jpg").toExternalForm());
 
         HBox hBox = new HBox();
