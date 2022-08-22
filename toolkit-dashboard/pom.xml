@@ -27,6 +27,10 @@
             <artifactId>fontawesomefx</artifactId>
             <version>8.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.sikejava.framework.flame</groupId>
+            <artifactId>flame-javafx</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

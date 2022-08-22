@@ -23,4 +23,18 @@
         <module>toolkit-dashboard</module>
     </modules>
 
+    <properties>
+        <flame.javafx.version>1.0.0-SNAPSHOT</flame.javafx.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.sikejava.framework.flame</groupId>
+                <artifactId>flame-javafx</artifactId>
+                <version>${flame.javafx.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 </project>

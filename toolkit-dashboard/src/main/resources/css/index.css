@@ -1,14 +1,12 @@
 .left-menu {
     -fx-background-color: #3975C6;
-    -fx-border-radius: 10 0 0 10;
-    -fx-background-radius: 10 0 0 10;
 }
 .left-menu-title {
     -fx-font-size: 16;
     -fx-font-family: "Berlin Sans F8";
-    -fx-font-weight: "bold";
-    -fx-font-style: "Regular";
-    -fx-text-fill: "white";
+    -fx-font-weight: bold;
+    -fx-font-style: normal;
+    -fx-text-fill: white;
 }
 .left-menu-separate .line {
     -fx-border-width: 1;
@@ -16,6 +14,9 @@
 }
 .left-menu-item:hover {
     -fx-background-color: #427BC9;
+}
+.main-title {
+    -fx-border-color: transparent transparent #E0E0E0 transparent;
 }
 .main-scroll {
     -fx-background-color: transparent;

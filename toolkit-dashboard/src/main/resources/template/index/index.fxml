@@ -2,16 +2,14 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1026.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sikejava.tool.toolkit.dashboard.index.IndexController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1036.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sikejava.tool.toolkit.dashboard.index.IndexController">
    <left>
       <VBox prefHeight="200.0" prefWidth="230.0" styleClass="left-menu" stylesheets="@../../css/index.css" BorderPane.alignment="CENTER">
          <children>
@@ -19,13 +17,13 @@
                <children>
                   <Label prefHeight="37.0" prefWidth="116.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="我的工具">
                      <padding>
-                        <Insets left="10.0" />
+                        <Insets left="15.0" />
                      </padding>
                   </Label>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="left-menu-item" stylesheets="@../../css/index.css">
                      <children>
                         <FontAwesomeIcon fill="WHITE" iconName="CLOCK_ALT" lineSpacing="20.0" size="26" />
-                        <Label prefHeight="37.0" prefWidth="140.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="最近使用">
+                        <Label prefHeight="37.0" prefWidth="130.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="最近使用">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -34,7 +32,7 @@
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="left-menu-item" stylesheets="@../../css/index.css">
                      <children>
                         <FontAwesomeIcon fill="WHITE" iconName="STAR" lineSpacing="20.0" size="26" />
-                        <Label prefHeight="37.0" prefWidth="140.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="我的收藏">
+                        <Label prefHeight="37.0" prefWidth="130.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="我的收藏">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -46,22 +44,17 @@
                   <Insets top="15.0" />
                </VBox.margin>
             </VBox>
-            <Separator prefHeight="20.0" prefWidth="200.0" styleClass="left-menu-separate" stylesheets="@../../css/index.css">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </Separator>
             <VBox prefHeight="316.0" prefWidth="250.0">
                <children>
                   <Label prefHeight="37.0" prefWidth="116.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="工具分类">
                      <padding>
-                        <Insets left="10.0" />
+                        <Insets left="15.0" />
                      </padding>
                   </Label>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="left-menu-item" stylesheets="@../../css/index.css">
                      <children>
                         <FontAwesomeIcon fill="WHITE" iconName="ROAD" lineSpacing="20.0" size="26" />
-                        <Label prefHeight="37.0" prefWidth="140.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="最近更新">
+                        <Label prefHeight="37.0" prefWidth="130.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="最近更新">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -71,7 +64,7 @@
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="left-menu-item" stylesheets="@../../css/index.css">
                      <children>
                         <FontAwesomeIcon fill="WHITE" iconName="HOME" size="26" />
-                        <Label prefHeight="37.0" prefWidth="140.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="全部">
+                        <Label prefHeight="37.0" prefWidth="130.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="全部">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -81,7 +74,7 @@
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="left-menu-item" stylesheets="@../../css/index.css">
                      <children>
                         <FontAwesomeIcon fill="WHITE" iconName="FLOPPY_ALT" lineSpacing="20.0" size="26" />
-                        <Label prefHeight="37.0" prefWidth="140.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="存储">
+                        <Label prefHeight="37.0" prefWidth="130.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="存储">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -91,7 +84,7 @@
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="left-menu-item" stylesheets="@../../css/index.css">
                      <children>
                         <FontAwesomeIcon fill="WHITE" iconName="MEH_ALT" lineSpacing="20.0" size="26" />
-                        <Label prefHeight="37.0" prefWidth="140.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="辅助">
+                        <Label prefHeight="37.0" prefWidth="130.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="辅助">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -101,7 +94,7 @@
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" styleClass="left-menu-item" stylesheets="@../../css/index.css">
                      <children>
                         <FontAwesomeIcon fill="WHITE" iconName="PINTEREST_P" lineSpacing="20.0" size="26" />
-                        <Label prefHeight="37.0" prefWidth="140.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="代码">
+                        <Label prefHeight="37.0" prefWidth="130.0" styleClass="left-menu-title" stylesheets="@../../css/index.css" text="代码">
                            <padding>
                               <Insets left="10.0" />
                            </padding>
@@ -116,7 +109,7 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="28.0">
+            <HBox fx:id="titleBar" alignment="CENTER_RIGHT" prefHeight="40.0" styleClass="main-title" stylesheets="@../../css/index.css">
                <children>
                   <FontAwesomeIcon iconName="MINUS" layoutX="897.0" layoutY="28.0" onMouseClicked="#minimize" size="14">
                      <HBox.margin>
@@ -130,17 +123,20 @@
                   </FontAwesomeIcon>
                   <FontAwesomeIcon iconName="CLOSE" onMouseClicked="#close" size="14">
                      <HBox.margin>
-                        <Insets left="15.0" right="7.0" />
+                        <Insets left="15.0" right="13.0" />
                      </HBox.margin>
                   </FontAwesomeIcon>
                </children>
                <padding>
-                  <Insets bottom="7.0" left="7.0" right="7.0" top="7.0" />
+                  <Insets bottom="13.0" top="13.0" />
                </padding>
             </HBox>
             <ScrollPane fitToWidth="true" pickOnBounds="false" prefWidth="200.0" styleClass="main-scroll" stylesheets="@../../css/index.css" VBox.vgrow="ALWAYS">
                <content>
-                  <FlowPane prefHeight="200.0" prefWidth="200.0" />
+                  <FlowPane fx:id="cardFlowPane" hgap="24.0" prefHeight="200.0" prefWidth="200.0" vgap="24.0">
+                     <padding>
+                        <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+                     </padding></FlowPane>
                </content>
             </ScrollPane>
          </children>
